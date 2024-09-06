@@ -117,13 +117,7 @@ export default function Dashboard() {
 
             <div className="space-y-4">
                 <div className="bg-blue-navy text-slate-50 rounded-lg px-5 py-3 space-y-4">
-                    <div className="text-lg border-b border-light-sky-blue flex">
-                        <div>Project List</div>
-                        <div className="flex-1 flex justify-end space-x-2 mb-2">
-                            <div className="text-slate-600 bg-gold rounded-full p-1 cursor-pointer" onClick={() => setMainPage(Constant.PAGE_USER_TIMELINE)} ><FaTimeline /></div>
-                        </div>
-                        
-                    </div>
+                    <div className="text-lg border-b border-light-sky-blue pb-1">Project List</div>
                     <div className="space-y-2">
                         {details.projects && details.projects.map((project: JSONObject, idx: number)=> (
                             <div key={`project-${project._id}`} className="flex cursor-pointer hover:text-yellow-500 items-center space-x-2" onClick={() => showProjectDetails(project)}>
