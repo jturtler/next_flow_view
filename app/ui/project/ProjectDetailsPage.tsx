@@ -13,11 +13,12 @@ import { ProjectProvider, useProject } from "@/contexts/ProjectContext";
 import ProjectCalendarTimeline from "./ProjectCalendarTimeline";
 import MeetingPage from "./meeting/MeetingPage";
 import MilestonePage from "./milestone/MilestonePage";
+import UserProjectsTimeline from "../dashboard/UserProjectsTimeline";
 
 
 export default function ProjectDetailsPage({ project }: { project: JSONObject }) {
 
-    const { subPage,setSubPage } = useMainUi();
+    const { subPage, setSubPage } = useMainUi();
     const { projectDetails } = useProject();
     
  
@@ -32,6 +33,7 @@ export default function ProjectDetailsPage({ project }: { project: JSONObject })
     return (
         <div className="relative h-full py-6 px-5 bg-white">
             {subPage === Constant.SUB_PAGE_TIMELINE && <ProjectTimeline data={projectDetails} />}
+            {/* {subPage === Constant.SUB_PAGE_TIMELINE && <UserProjectsTimeline details={projectDetails} />} */}
             {subPage === Constant.SUB_PAGE_CALENDAR && <ProjectCalendarTimeline project={project} data={projectDetails}/>} 
             {subPage === Constant.SUB_PAGE_NEW_TASK && <TaskPage projectId={projectId} data={projectDetails} />}
             {subPage === Constant.SUB_PAGE_NEW_MEETING && <MeetingPage projectId={projectId} data={projectDetails} />}

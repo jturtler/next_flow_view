@@ -32,29 +32,6 @@ export async function fetchProjectById(projectId: string): Promise<JSONObject> {
     let milestones = await Milestone.find({ projectId: projectIdObj });
     let tasks = await Task.find({ projectId: projectIdObj });
 
-    // // Convert dates with UTC to Local date
-    // meetings = meetings.map((metting: JSONObject, idx: number) => {
-		// 	let _temp = Utils.cloneJSONObject(metting);
-		// 	_temp.date = Utils.convertToLocalDateObj(_temp.date);
-
-    //   return _temp;
-		// });
-
-    // milestones = milestones.map((milestone: JSONObject, idx: number) => {
-		// 	let _temp = Utils.cloneJSONObject(milestone);
-		// 	_temp.dueDate = Utils.convertToLocalDateObj(_temp.dueDate);
-
-    //   return _temp;
-		// });
-
-    // tasks = tasks.map((task: JSONObject, idx: number) => {
-		// 	let _temp = Utils.cloneJSONObject(task); 
-		// 	_temp.startDate = Utils.convertToLocalDateObj(_temp.startDate);
-		// 	_temp.endDate = Utils.convertToLocalDateObj(_temp.endDate);
-
-    //   return _temp;
-		// });
-
     return ({ status: "success", data: Utils.cloneJSONObject({ meetings, milestones, tasks }) });
   } catch (error: any) {
     return { status: "error", message: error.message };

@@ -44,10 +44,19 @@ export default function Header() {
 
 	return (
 		<header className={`flex bg-white px-4 py-3 items-center text-sm z-10 ${user !== null && "border-b border-gray-400"}`}>
-			{user !== null && mainPage !== Constant.PAGE_PROJECT_DETAILS && <div className={`ml-5 flex-1 flex items-start flex-col`}  >
+			{user !== null && mainPage === Constant.PAGE_DASHBOARD && <div className={`ml-5 flex-1 flex items-start flex-col`}  >
                 <div className="text-2xl transition-transform">Welcome, {user!.email.split("@")[0]}</div>
                 <div className="text-md italic">Here is your project list and agendar</div>
 			</div>}
+
+			{mainPage === Constant.PAGE_USER_TIMELINE && <>
+				<div 
+					className={`pr-5 uppercase cursor-pointer text-bright-blue hover:text-royal-blue ml-5`}
+					onClick={() => showDashboard()
+					}><MdDashboard className="size-8"/></div>
+			
+				<div className="uppercase pr-5 border-b-2 hover:border-light-sky-blue border-light-sky-blue text-lg">Timeline</div>
+			</>}
 
 			{mainPage === Constant.PAGE_PROJECT_DETAILS && <>
 				<div 

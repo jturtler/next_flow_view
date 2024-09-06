@@ -1,16 +1,12 @@
-"use client";
-
-import React, { useEffect } from 'react';
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
-import { JSONObject } from '@/lib/definations';
+import { JSONObject } from "@/lib/definations";
 import * as Utils from "@/lib/utils";
-import { FaMeetup } from "react-icons/fa";
-import { FaTasks } from 'react-icons/fa';
-import { TbTargetArrow } from "react-icons/tb";
+import { useEffect } from "react";
+import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 
 
-const ProjectTimeline = ({ data }:{data: JSONObject}) => {
+export default function UserProjectsTimeline({projects, details}: {projects?: JSONObject[], details: JSONObject}) {
+
+    const timelineList = Utils.convertProgramDetails(details, projects);
 
     useEffect(() => {
         // Add class after component mounts
@@ -19,13 +15,8 @@ const ProjectTimeline = ({ data }:{data: JSONObject}) => {
                 document.querySelector('.vertical-timeline')!.classList.remove('vertical-timeline--animate');
     }, []);
 
-    // const timelineList = convertData();
-    const timelineList = Utils.convertProgramDetails(data);
-
     return (
-        <>
-            
-            <h2 className="text-2xl font-semibold mb-6 flex justify-center border-b-2 border-light-sky-blue pb-2 w-fit pr-5">Timeline</h2>
+        <div className="relative h-full py-6 px-5 bg-white">
             <VerticalTimeline className=''>
                 {timelineList.map((item: JSONObject, index: number) => {
                     const IconComponent = item.icon;
@@ -45,10 +36,9 @@ const ProjectTimeline = ({ data }:{data: JSONObject}) => {
                             </h3>
                             <div className="text-sm mt-3 text-black">{item.description}</div>
                         </VerticalTimelineElement>
-                )})}
+                    )
+                })}
             </VerticalTimeline>
-        </>
+        </div>
     );
-};
-
-export default ProjectTimeline;
+}

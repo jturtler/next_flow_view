@@ -13,6 +13,7 @@ import * as AppStore from "@/lib/appStore";
 import { RiBubbleChartFill } from "react-icons/ri";
 import LoginPage from "./auth/LoginPage";
 import { ProjectProvider } from "@/contexts/ProjectContext";
+import UserProjectsTimeline from "./dashboard/UserProjectsTimeline";
 
 
 export default function AppWrapper() {
@@ -27,7 +28,7 @@ export default function AppWrapper() {
 			</div>
 
 
-			<div className="absolute flex items-end justify-end w-full">
+			<div className="absolute flex items-end justify-end w-[calc(100%-20px)]">
 				<RiBubbleChartFill className="text-sky-blue size-32 opacity-15" />
 			</div>
 
@@ -35,7 +36,12 @@ export default function AppWrapper() {
 				<div className="flex-1">
 					{mainPage === Constant.PAGE_LOGIN && <LoginPage />}
 					{mainPage === Constant.PAGE_USER_REGISTRATION && <RegisterForm />}
+
+
 					{mainPage === Constant.PAGE_DASHBOARD && <Dashboard />}
+					{mainPage === Constant.PAGE_USER_TIMELINE && <UserProjectsTimeline projects={AppStore.getProjectList()!} details={AppStore.getDetailsProjectList()!} /> }
+
+
 					{mainPage === Constant.PAGE_PROJECT_DETAILS && 
 						<ProjectProvider projectId={AppStore.getProject()!._id}>
 							<ProjectDetailsPage project={AppStore.getProject()!} />
