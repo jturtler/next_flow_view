@@ -10,7 +10,7 @@ export default function Home() {
 	return (
 		<MainUiProvider>
 		 	 <AuthProvider>
-				<div className="h-screen flex flex-col text-black">
+				<div className="h-screen flex flex-col">
 					<Header />
 					<AppWrapper />
 					<Footer /> 

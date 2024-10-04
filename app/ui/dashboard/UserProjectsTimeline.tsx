@@ -16,7 +16,7 @@ export default function UserProjectsTimeline({projects, details}: {projects?: JS
     }, []);
 
     return (
-        <div className="relative h-full py-6 px-5 bg-white rounded-lg">
+        <div className="relative h-full py-6 px-5 bg-white">
             <VerticalTimeline className=''>
                 {timelineList.map((item: JSONObject, index: number) => {
                     const IconComponent = item.icon;

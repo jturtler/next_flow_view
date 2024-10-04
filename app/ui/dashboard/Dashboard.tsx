@@ -17,7 +17,6 @@ import { MdOutlineViewTimeline } from "react-icons/md";
 import { FcTimeline } from "react-icons/fc";
 import { IoStatsChart } from "react-icons/io5";
 import { LuGanttChart } from "react-icons/lu";
-import UserProjectsTimeline from "./UserProjectsTimeline";
 
 
 export default function Dashboard() {
@@ -109,15 +108,17 @@ export default function Dashboard() {
     const eventList = getEventList();
 
     return (
-        <div className="px-6 my-8 grid grid-cols-1 lg:grid-cols-3 gap-y-5 gap-x-5 z-10 md:grid-cols-2">
-
-            <div className="space-y-4 lg:col-span-2 ">
-                {Object.keys(details).length > 0 && <UserProjectsTimeline projects={AppStore.getProjectList()!} details={AppStore.getDetailsProjectList()!} />}
-            </div>
-
+        <div className="px-6 my-8 grid grid-cols-1 gap-y-5 gap-x-5 z-10 lg:grid-cols-2 md:grid-cols-2">
+            
             <div className="space-y-4">
                 <div className="bg-blue-navy text-slate-50 rounded-lg px-5 py-3 space-y-4">
-                    <div className="text-lg border-b border-light-sky-blue pb-1">Project List</div>
+                    <div className="text-lg border-b border-light-sky-blue flex">
+                        <div>Project List</div>
+                        <div className="flex-1 flex justify-end space-x-2 mb-2">
+                            <div className="text-slate-600 bg-gold rounded-full p-1 cursor-pointer" onClick={() => setMainPage(Constant.PAGE_USER_TIMELINE)} ><FaTimeline /></div>
+                        </div>
+                        
+                    </div>
                     <div className="space-y-2">
                         {details.projects && details.projects.map((project: JSONObject, idx: number)=> (
                             <div key={`project-${project._id}`} className="flex cursor-pointer hover:text-yellow-500 items-center space-x-2" onClick={() => showProjectDetails(project)}>
@@ -132,7 +133,9 @@ export default function Dashboard() {
                     {/* <Calendar events={[]} onClick={({date: Date, events: EventType[]})=> {}} /> */}
                     <Calendar events={getCalendarEvents()} onClick={(data: JSONObject)=> { }} />
                 </div>
+            </div>
 
+            <div className="space-y-4">
                 <div className="row-span-2 items-center justify-center bg-white rounded-lg p-3 space-y-2 h-full">
                     <div className="font-bold">Task List</div>
                     {eventList === undefined && eventList === null ? <div>[No task]</div> :
