@@ -97,7 +97,7 @@ export default function Dashboard() {
 
     const getEventList = () => {
         const events = getCalendarEvents();
-        const today = new Date();
+        const today = new Date(2024, 8, 1); // Get events in time have demo data.
         const list: EventType[] = events.filter((event: EventType) => today.getTime() <= event.end.getTime() );
 
         return list.sort((a,b)=> a.end.getTime() - b.end.getTime());
@@ -131,7 +131,7 @@ export default function Dashboard() {
 
                 <div className="bg-white rounded-lg p-3 min-w-96 min-h-[520px]">
                     {/* <Calendar events={[]} onClick={({date: Date, events: EventType[]})=> {}} /> */}
-                    <Calendar events={getCalendarEvents()} onClick={(data: JSONObject)=> { }} />
+                    <Calendar events={getCalendarEvents()} onClick={(data: JSONObject)=> { }} initMonth={9} initYear={2024} />
                 </div>
             </div>
 
