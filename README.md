@@ -20,17 +20,6 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## JSON data API
-
-The JSON data files are stored in the private root-level `data` directory. The
-API exposes the five files through authenticated routes:
-
-- `GET /api/data/users`
-- `GET /api/data/projects`
-- `GET /api/data/tasks`
-- `GET /api/data/milestones`
-- `GET /api/data/meetings`
-
 Each route also accepts `PUT` with a JSON array to replace that file's entire
 contents. API access requires a valid login session. Set `SESSION_SECRET` in
 `.env.local` to a long, random value before logging in; the server uses it to
