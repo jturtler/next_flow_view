@@ -9,13 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/mongoose": "^5.11.97",
     "@types/react-icons": "^3.0.0",
     "@types/react-vertical-timeline-component": "^3.3.6",
     "bcryptjs": "^2.4.3",
     "date-fns": "^3.6.0",
     "install": "^0.13.0",
-    "mongoose": "^8.4.0",
     "next": "14.2.7",
     "nextjs-jc-component-libs": "0.0.10",
     "npm": "^10.8.3",

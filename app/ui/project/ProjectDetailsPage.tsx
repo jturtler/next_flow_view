@@ -19,16 +19,21 @@ import UserProjectsTimeline from "../dashboard/UserProjectsTimeline";
 export default function ProjectDetailsPage({ project }: { project: JSONObject }) {
 
     const { subPage, setSubPage } = useMainUi();
-    const { projectDetails } = useProject();
+    const { projectDetails, error, processStatus } = useProject();
     
  
     useEffect(() => {
         setSubPage(Constant.SUB_PAGE_TIMELINE);
-    }, []);
+    }, [setSubPage]);
 
     const projectId = AppStore.getProject()!._id;
 
-    if( projectDetails === null ) return (<div>Loading ...</div>);
+    if (projectDetails === null) {
+        if (processStatus === Constant.FETCH_DATA_FAILURE) {
+            return <div role="alert">Unable to load project details: {error}</div>;
+        }
+        return <div>Loading ...</div>;
+    }
 
     return (
         <div className="relative h-full py-6 px-5 bg-white">

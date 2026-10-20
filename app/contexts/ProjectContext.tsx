@@ -45,25 +45,40 @@ export const ProjectProvider = ({ projectId, children }: { projectId: string, ch
 	const [processStatus, setProcessStatus] = useState<string>("");
 	const [error, setError] = useState<string | null>(null);
 
-	
-	const fetchProgramDetails = async (programId: string) => {
+	useEffect(() => {
+		let isCurrentProject = true;
+		setProjectDetails(null);
 		setProcessStatus(Constant.FETCH_DATA_REQUEST);
 		setError(null);
 
-		const response: JSONObject = await dbService.fetchProjectById(programId);
-        if (response.status != "success") {
-            setError(response.message);
-			setProcessStatus(Constant.FETCH_DATA_FAILURE);
-        }
-        else {
-            setProjectDetails(response.data);
-			setProcessStatus(Constant.FETCH_DATA_SUCCESS);
-        }
-	};
+		const fetchProjectDetails = async () => {
+			try {
+				const response: JSONObject = await dbService.fetchProjectById(projectId);
+				if (!isCurrentProject) return;
 
-    useEffect(() => {
-        fetchProgramDetails(projectId);
-    }, []);
+				if (response.status !== "success") {
+					setError(response.message ?? "Unable to load project details.");
+					setProcessStatus(Constant.FETCH_DATA_FAILURE);
+				} else {
+					setProjectDetails(response.data);
+					setProcessStatus(Constant.FETCH_DATA_SUCCESS);
+				}
+			} catch (error) {
+				if (!isCurrentProject) return;
+				setError(
+					error instanceof Error
+						? error.message
+						: "Unable to load project details.",
+				);
+				setProcessStatus(Constant.FETCH_DATA_FAILURE);
+			}
+		};
+
+		void fetchProjectDetails();
+		return () => {
+			isCurrentProject = false;
+		};
+	}, [projectId]);
 
 	const saveTask = async(task: JSONObject) => {
 		setProcessStatus(Constant.SAVE_DATA_REQUEST);

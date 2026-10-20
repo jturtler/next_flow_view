@@ -1,23 +1,28 @@
 "use server";
 
-import mongoose from "mongoose";
-import Project from "../schemas/Project.schema";
 import { JSONObject } from "../definations";
-import connectToDatabase from "./db";
-import Metting from "../schemas/Meeting.schema";
-import Milestone from "../schemas/Milestone.schema";
-import Task from "../schemas/Task.schema";
-import * as Utils from "@/lib/utils";
+import { readFileData } from "@/services/fileService";
+import {
+	TMeeting,
+	TMilestone,
+	TProject,
+	TTask,
+} from "../../../types/model";
+
+const projectFileName = "projects.json";
+const taskFileName = "tasks.json";
+const meetingFileName = "meetings.json";
+const milestoneFileName = "milestones.json";
 
 export async function fetchProjectsByUserId(
   userId: string
 ): Promise<JSONObject> {
   try {
-    await connectToDatabase();
-    const userIdObj = new mongoose.Types.ObjectId(userId);
-    const projects: JSONObject[] = await Project.find({ managedBy: userIdObj });
-
-    return { status: "success", data: Utils.cloneJSONObject(projects) };
+    const projects = await readFileData<TProject>(projectFileName);
+    return {
+      status: "success",
+      data: projects.filter((project) => project.managedBy === userId),
+    };
   } catch (error: any) {
     return { status: "error", message: error.message };
   }
@@ -25,14 +30,22 @@ export async function fetchProjectsByUserId(
 
 export async function fetchProjectById(projectId: string): Promise<JSONObject> {
   try {
-    const projectIdObj = new mongoose.Types.ObjectId(projectId);
+    const [meetings, milestones, tasks] = await Promise.all([
+      readFileData<TMeeting>(meetingFileName),
+      readFileData<TMilestone>(milestoneFileName),
+      readFileData<TTask>(taskFileName),
+    ]);
 
-    await connectToDatabase();
-    let meetings = await Metting.find({ projectId: projectIdObj });
-    let milestones = await Milestone.find({ projectId: projectIdObj });
-    let tasks = await Task.find({ projectId: projectIdObj });
-
-    return ({ status: "success", data: Utils.cloneJSONObject({ meetings, milestones, tasks }) });
+    return {
+      status: "success",
+      data: {
+        meetings: meetings.filter((meeting) => meeting.projectId === projectId),
+        milestones: milestones.filter(
+          (milestone) => milestone.projectId === projectId,
+        ),
+        tasks: tasks.filter((task) => task.projectId === projectId),
+      },
+    };
   } catch (error: any) {
     return { status: "error", message: error.message };
   }

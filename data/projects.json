@@ -1,0 +1,49 @@
+[{
+  "_id": "64f8a72bf1c1b47650cbe8b1",
+  "name": "Project Alpha",
+  "description": "A project to develop a new feature for the product.",
+  "startDate":"2024-09-01T09:00:00.000Z",
+  "endDate":"2024-12-01T17:00:00.000Z",
+  "status": "In Progress",
+  "teamMembers": [
+    "64f72bf0f1c1b47650cbe8a1",
+    "64f72bf0f1c1b47650cbe8a2",
+    "64f72bf0f1c1b47650cbe8a4",
+    "64f72cb7f1c1b47650cbe8a5"
+  ],
+  "createdAt":"2024-08-29T10:00:00.000Z",
+  "updatedAt":"2024-08-29T10:00:00.000Z",
+  "managedBy": "64f72bf0f1c1b47650cbe8a1"
+},
+{
+  "_id": "64f8a8a2f1c1b47650cbe8b2",
+  "name": "Project Beta",
+  "description": "A project for implementing a new marketing strategy.",
+  "startDate":"2024-09-15T09:00:00.000Z",
+  "endDate":"2024-11-30T17:00:00.000Z",
+  "status": "Not Started",
+  "teamMembers": [
+    "64f72bf0f1c1b47650cbe8a1",
+    "64f72bf0f1c1b47650cbe8a4",
+    "64f72bf0f1c1b47650cbe8a2"
+  ],
+  "createdAt":"2024-08-29T10:15:00.000Z",
+  "updatedAt":"2024-08-29T10:15:00.000Z",
+  "managedBy": "64f72bf0f1c1b47650cbe8a1"
+},
+{
+  "_id": "64f8ab27f1c1b47650cbe8b3",
+  "name": "Project Gamma",
+  "description": "A project for redesigning the company website.",
+  "startDate":"2024-10-01T09:00:00.000Z",
+  "endDate":"2024-12-31T17:00:00.000Z",
+  "status": "Planning",
+  "teamMembers": [
+    "64f72bf0f1c1b47650cbe8a1",
+    "64f72bf0f1c1b47650cbe8a2",
+    "64f72cb7f1c1b47650cbe8a5"
+  ],
+  "updatedAt":"2024-08-29T10:30:00.000Z",
+  "managedBy": "64f72bf0f1c1b47650cbe8a1",
+  "createdBy":"2024-08-29T10:30:00.000Z"
+}]

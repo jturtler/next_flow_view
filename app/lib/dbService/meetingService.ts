@@ -1,62 +1,83 @@
 "use server";
 
-import mongoose from "mongoose";
+import { randomBytes } from "node:crypto";
 import { JSONObject } from "../definations";
-import connectToDatabase from "./db";
-import Metting from "../schemas/Meeting.schema";
-import * as Utils from "@/lib/utils";
+import { readFileData, updateDataList } from "@/services/fileService";
+import { TMeeting } from "../../../types/model";
+
+const meetingFileName = "meetings.json";
 
 export async function fetchMeetingsByProjectIdList(
 	projectIds: string[]
 ): Promise<JSONObject> {
 	try {
-		await connectToDatabase();
+		const projectIdSet = new Set(projectIds);
+		const meetings = await readFileData<TMeeting>(meetingFileName);
 
-		const projectObjIds = projectIds.map(
-			(id) => new mongoose.Types.ObjectId(id)
-		);
-		const meetings = await Metting.find({ projectId: { $in: projectObjIds } });
-
-		return { status: "success", data: Utils.cloneJSONObject(meetings) };
+		return {
+			status: "success",
+			data: meetings.filter((meeting) => projectIdSet.has(meeting.projectId)),
+		};
 	} catch (error: any) {
 		return { status: "error", message: error.message };
 	}
 }
 
-
-
-export async function saveMetting( payload: JSONObject ): Promise<JSONObject> {
+export async function saveMetting(payload: JSONObject): Promise<JSONObject> {
 	try {
-		await connectToDatabase();
-
-		let metting: JSONObject = Utils.cloneJSONObject(payload);
-		metting.projectId = new mongoose.Types.ObjectId(payload.projectId);
-		metting.assignedTo = payload.assignedTo.map((id: string) => new mongoose.Types.ObjectId(id));
-		metting.createdBy = new mongoose.Types.ObjectId(payload.createdBy);
-		
-        // Save the metting to the database
-		let newMetting;
-		if( metting._id === undefined ) { // Add new
-        	newMetting = await Metting.create(metting);
-		}
-		else {
-			newMetting = await Metting.findByIdAndUpdate(metting._id, metting, { new: true, runValidators: true });
+		const now = new Date().toISOString();
+		const date = new Date(payload.date);
+		if (Number.isNaN(date.getTime())) {
+			throw new Error("Meeting date must be valid.");
 		}
 
-		return { status: "success", data: Utils.cloneJSONObject(newMetting) };
+		const meetingData: TMeeting = {
+			...payload,
+			_id: payload._id ?? randomBytes(12).toString("hex"),
+			projectId: payload.projectId,
+			name: payload.name,
+			description: payload.description,
+			date: date.toISOString(),
+			participants: payload.participants ?? [],
+			meetingNotes: payload.meetingNotes ?? "",
+			assignedTo: payload.assignedTo,
+			createdBy: payload.createdBy,
+			createdAt: payload.createdAt ?? now,
+			updatedAt: now,
+		};
+
+		const savedMeeting = await updateDataList<TMeeting, TMeeting>(
+			meetingFileName,
+			(meetings) => {
+				const existingIndex = meetings.findIndex(
+					(meeting) => meeting._id === meetingData._id,
+				);
+				if (existingIndex === -1) {
+					meetings.push(meetingData);
+					return meetingData;
+				}
+
+				const updatedMeeting = {
+					...meetingData,
+					createdAt: meetings[existingIndex].createdAt,
+				};
+				meetings[existingIndex] = updatedMeeting;
+				return updatedMeeting;
+			},
+		);
+
+		return { status: "success", data: savedMeeting };
 	} catch (error: any) {
 		return { status: "error", message: error.message };
 	}
 }
-
 
 export async function removeMetting(id: string): Promise<JSONObject> {
-	
 	try {
-		await connectToDatabase();
-		
-        // Save the metting to the database
-		const newMetting = await Metting.findByIdAndDelete(id);
+		await updateDataList<TMeeting, void>(meetingFileName, (meetings) => {
+			const meetingIndex = meetings.findIndex((meeting) => meeting._id === id);
+			if (meetingIndex !== -1) meetings.splice(meetingIndex, 1);
+		});
 
 		return { status: "success" };
 	} catch (error: any) {

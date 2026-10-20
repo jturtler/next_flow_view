@@ -1,0 +1,174 @@
+[
+  {
+    "_id": "64f8cf3bf1c1b47650cbe8c1",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Project Alpha Kickoff",
+    "description": "Initial meeting to discuss the project objectives and assign roles.",
+    "date": "2024-09-01T10:00:00.000Z",
+    "participants": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72bf0f1c1b47650cbe8a2",
+      "64f72bf0f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1",
+    "createdAt": "2024-09-01T09:00:00.000Z",
+    "updatedAt": "2024-09-01T09:00:00.000Z",
+    "assignedTo": [
+      "64f72c4af1c1b47650cbe8a2",
+      "64f72ca2f1c1b47650cbe8a4",
+      "64f72cb7f1c1b47650cbe8a5"
+    ]
+  },
+  {
+    "_id": "64f8d0d8f1c1b47650cbe8c2",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Requirement Gathering",
+    "description": "Discussion on the detailed requirements for the new feature.",
+    "date": "2024-09-04T14:00:00.000Z",
+    "participants": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1",
+    "createdAt": "2024-09-05T13:00:00.000Z",
+    "updatedAt": "2024-09-05T13:00:00.000Z",
+    "assignedTo": [
+      "64f72c4af1c1b47650cbe8a2",
+      "64f72ca2f1c1b47650cbe8a4",
+      "64f72cb7f1c1b47650cbe8a5"
+    ]
+  },
+  {
+    "_id": "64f8d31df1c1b47650cbe8c3",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Design Review",
+    "description": "Meeting to review the proposed designs for the new feature.",
+    "date": "2024-09-14T10:00:00.000Z",
+    "participants": [
+      "64f72bf0f1c1b47650cbe8a2",
+      "64f72cb7f1c1b47650cbe8a5",
+      "64f72bf0f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1",
+    "createdAt": "2024-09-10T10:00:00.000Z",
+    "updatedAt": "2024-09-10T10:00:00.000Z",
+    "assignedTo": [
+      "64f72c4af1c1b47650cbe8a2",
+      "64f72c4af1c1b47650cbe8a4"
+    ]
+  },
+  {
+    "_id": "64f8d74ef1c1b47650cbe8c4",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Project Beta Kickoff",
+    "description": "Kickoff meeting to align on marketing strategy goals.",
+    "date": "2024-09-19T09:00:00.000Z",
+    "participants": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72bf0f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4",
+    "createdAt": "2024-09-20T08:00:00.000Z",
+    "updatedAt": "2024-09-20T08:00:00.000Z",
+    "assignedTo": [
+      "64f72c4af1c1b47650cbe8a2",
+      "64f72ca2f1c1b47650cbe8a4"
+    ]
+  },
+  {
+    "_id": "64f8da82f1c1b47650cbe8c5",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Marketing Plan Review",
+    "description": "Reviewing the draft of the new marketing strategy.",
+    "date": "2024-09-24T11:00:00.000Z",
+    "participants": [
+      "64f72bf0f1c1b47650cbe8a2",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4",
+    "createdAt": "2024-09-24T10:00:00.000Z",
+    "updatedAt": "2024-09-24T10:00:00.000Z",
+    "assignedTo": [
+      "64f72c4af1c1b47650cbe8a2",
+      "64f72c4af1c1b47650cbe8a4",
+      "64f72c4af1c1b47650cbe8a5"
+    ]
+  },
+  {
+    "_id": "64f8dd42f1c1b47650cbe8c6",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Campaign Execution Plan",
+    "description": "Discussion on how to execute the marketing campaign.",
+    "date": "2024-10-04T14:00:00.000Z",
+    "participants": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72bf0f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4",
+    "createdAt": "2024-10-01T13:00:00.000Z",
+    "updatedAt": "2024-10-01T13:00:00.000Z",
+    "assignedTo": [
+      "64f72c4af1c1b47650cbe8a2",
+      "64f72c4af1c1b47650cbe8a4",
+      "64f72c4af1c1b47650cbe8a5"
+    ]
+  },
+  {
+    "_id": "64f8e2a2f1c1b47650cbe8c7",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Project Gamma Kickoff",
+    "description": "Kickoff meeting to start the website redesign project.",
+    "date": "2024-10-04T10:00:00.000Z",
+    "participants": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72bf0f1c1b47650cbe8a4",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1",
+    "createdAt": "2024-10-01T10:00:00.000Z",
+    "updatedAt": "2024-10-01T10:00:00.000Z",
+    "assignedTo": [
+      "64f72c4af1c1b47650cbe8a2",
+      "64f72c4af1c1b47650cbe8a4",
+      "64f72c4af1c1b47650cbe8a5"
+    ]
+  },
+  {
+    "_id": "64f8e568f1c1b47650cbe8c8",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Design Proposal Review",
+    "description": "Review the initial design proposal for the new website.",
+    "date": "2024-10-08T09:00:00.000Z",
+    "participants": [
+      "64f72bf0f1c1b47650cbe8a2",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1",
+    "createdAt": "2024-10-07T09:00:00.000Z",
+    "updatedAt": "2024-10-07T09:00:00.000Z",
+    "assignedTo": [
+      "64f72c4af1c1b47650cbe8a2",
+      "64f72c4af1c1b47650cbe8a4",
+      "64f72c4af1c1b47650cbe8a5"
+    ]
+  },
+  {
+    "_id": "64f8e831f1c1b47650cbe8c9",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Development Plan",
+    "description": "Discuss the development plan for the new website design.",
+    "date": "2024-10-14T13:00:00.000Z",
+    "participants": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72bf0f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1",
+    "createdAt": "2024-10-12T13:00:00.000Z",
+    "updatedAt": "2024-10-12T13:00:00.000Z",
+    "assignedTo": [
+      "64f72c4af1c1b47650cbe8a2",
+      "64f72c4af1c1b47650cbe8a4",
+      "64f72c4af1c1b47650cbe8a5"
+    ]
+  }
+]

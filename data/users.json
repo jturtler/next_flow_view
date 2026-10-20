@@ -1,0 +1,48 @@
+[
+    {
+        "_id": "64f72bf0f1c1b47650cbe8a1",
+        "email": "manager1@example.com",
+        "password": "$2a$10$4YYNumoivtvnzjvpXUx1UuOGPPSO6imQ6Vjr2PxuPPDtuA3WbxGfO",
+        "role": "project_manager",
+        "createdAt": "2024-08-29T10: 00: 00.000Z",
+        "updatedAt": "2026-04-18T02: 31: 29.502Z",
+        "teamMembers": [
+            "64f72c4af1c1b47650cbe8a2",
+            "64f72ca2f1c1b47650cbe8a4",
+            "64f72cb7f1c1b47650cbe8a5"
+        ]
+    },
+    {
+        "_id": "64f72ca2f1c1b47650cbe8a4",
+        "email": "test2@example.com",
+        "password": "$2a$10$kD78Y1A44mME8MgPZ4RIrufExK8FmLAx2BpGSbGVsUnsH.bfLPLWq",
+        "role": "team_member",
+        "createdAt": "2024-08-29T10: 15: 00.000Z",
+        "updatedAt": "2024-09-02T11: 12: 21.701Z"
+    },
+    {
+        "_id": "64f72cb7f1c1b47650cbe8a5",
+        "email": "test3@example.com",
+        "password": "$2a$10$kD78Y1A44mME8MgPZ4RIrufExK8FmLAx2BpGSbGVsUnsH.bfLPLWq",
+        "role": "team_member",
+        "createdAt": "2024-08-29T10: 20: 00.000Z",
+        "updatedAt": "2024-09-02T11: 12: 21.721Z"
+    },
+    {
+        "_id": "64f72c4af1c1b47650cbe8a2",
+        "email": "test1@example.com",
+        "password": "$2a$10$kD78Y1A44mME8MgPZ4RIrufExK8FmLAx2BpGSbGVsUnsH.bfLPLWq",
+        "role": "viewer",
+        "createdAt": "2024-08-29T10: 05: 00.000Z",
+        "updatedAt": "2026-03-21T09: 34: 51.950Z"
+    },
+    {
+        "_id": "69be65af82c2286140180888",
+        "email": "asaFDSAFSA",
+        "password": "$2a$10$x9dPaQeEuQdKLtay23dMfehvABWhmpW8S/qs3zu827szXAkXXxcpm",
+        "role": "team_member",
+        "teamMembers": [],
+        "createdAt": "2026-03-21T09: 32: 31.367Z",
+        "updatedAt": "2026-03-21T09: 32: 31.367Z"
+    }
+]

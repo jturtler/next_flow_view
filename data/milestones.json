@@ -1,0 +1,159 @@
+[
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8c0",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Feature Specification Finalization",
+    "description": "Finalize the detailed specification for the new feature.",
+    "dueDate": "2024-09-15T00:00:00.000Z",
+    "status": "pending",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72bf0f1c1b47650cbe8a2"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1"
+  },
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8c1",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Prototype Development",
+    "description": "Complete the development of the feature prototype.",
+    "dueDate": "2024-10-10T00:00:00.000Z",
+    "status": "pending",
+    "assignedTo": [
+      "64f72cb7f1c1b47650cbe8a5",
+      "64f72bf0f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1"
+  },
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8c2",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Internal Testing",
+    "description": "Conduct internal testing and gather feedback on the prototype.",
+    "dueDate": "2024-11-01T00:00:00.000Z",
+    "status": "pending",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1"
+  },
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8c3",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Feature Launch",
+    "description": "Launch the feature to the production environment.",
+    "dueDate": "2024-11-30T00:00:00.000Z",
+    "status": "pending",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a4",
+      "64f72bf0f1c1b47650cbe8a2"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1"
+  },
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8c4",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Strategy Planning",
+    "description": "Plan the new marketing strategy in detail.",
+    "dueDate": "2024-09-30T00:00:00.000Z",
+    "status": "pending",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72bf0f1c1b47650cbe8a2"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4"
+  },
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8c5",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Marketing Campaign Launch",
+    "description": "Launch the new marketing campaign based on the developed strategy.",
+    "dueDate": "2024-10-20T00:00:00.000Z",
+    "status": "pending",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72bf0f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4"
+  },
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8c6",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Review Campaign Results",
+    "description": "Review the results and performance of the marketing campaign.",
+    "dueDate": "2024-11-10T00:00:00.000Z",
+    "status": "pending",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a2",
+      "64f72bf0f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4"
+  },
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8c7",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Campaign Optimization",
+    "description": "Optimize the marketing campaign based on the review feedback.",
+    "dueDate": "2024-11-30T00:00:00.000Z",
+    "status": "pending",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72bf0f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4"
+  },
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8c8",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Initial Design Draft",
+    "description": "Complete the initial design draft for the company website.",
+    "dueDate": "2024-10-10T00:00:00.000Z",
+    "status": "achieved",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72c07f1c1b47650cbe8a2",
+    "updatedAt": "2025-01-17T16:03:40.200Z"
+  },
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8c9",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Design Review",
+    "description": "Review and finalize the design draft with stakeholders.",
+    "dueDate": "2024-11-01T00:00:00.000Z",
+    "status": "pending",
+    "assignedTo": [
+      "64f72cb7f1c1b47650cbe8a5",
+      "64f72bf0f1c1b47650cbe8a3"
+    ],
+    "createdBy": "64f72c07f1c1b47650cbe8a2"
+  },
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8ca",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Development Phase",
+    "description": "Begin the development phase based on the finalized design.",
+    "dueDate": "2024-12-01T00:00:00.000Z",
+    "status": "pending",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72c07f1c1b47650cbe8a2"
+  },
+  {
+    "_id": "64f8a9c8f1c1b47650cbe8cb",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Website Launch",
+    "description": "Launch the new company website and monitor performance.",
+    "dueDate": "2024-12-15T00:00:00.000Z",
+    "status": "pending",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72c07f1c1b47650cbe8a2"
+  }
+]

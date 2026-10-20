@@ -1,0 +1,255 @@
+[
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8d0",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Requirement Gathering",
+    "description": "Gather and document the requirements for the new feature.",
+    "startDate": "2024-09-01T15:00:00.000Z",
+    "endDate": "2024-09-07T15:00:00.000Z",
+    "status": "in_progress",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72bf0f1c1b47650cbe8a2"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1",
+    "updatedAt": "2024-09-04T02:07:34.327Z"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8d1",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "UI/UX Design",
+    "description": "Design the user interface and experience for the new feature.",
+    "startDate": "2024-09-08T00:00:00.000Z",
+    "endDate": "2024-09-21T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72cb7f1c1b47650cbe8a5",
+      "64f72bf0f1c1b47650cbe8a2"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8d2",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Backend Development",
+    "description": "Develop the backend services for the new feature.",
+    "startDate": "2024-09-22T00:00:00.000Z",
+    "endDate": "2024-10-15T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a4",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8d3",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Integration Testing",
+    "description": "Test the integration of the new feature with existing systems.",
+    "startDate": "2024-10-16T00:00:00.000Z",
+    "endDate": "2024-11-01T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72cb7f1c1b47650cbe8a5",
+      "64f72bf0f1c1b47650cbe8a2"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8d4",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "User Acceptance Testing",
+    "description": "Conduct user acceptance testing for the new feature.",
+    "startDate": "2024-11-02T00:00:00.000Z",
+    "endDate": "2024-11-15T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72cb7f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8d5",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Documentation",
+    "description": "Prepare and finalize documentation for the new feature.",
+    "startDate": "2024-11-16T00:00:00.000Z",
+    "endDate": "2024-11-22T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a2",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8d6",
+    "projectId": "64f8a72bf1c1b47650cbe8b1",
+    "name": "Feature Launch",
+    "description": "Deploy and monitor the new feature in production.",
+    "startDate": "2024-11-23T00:00:00.000Z",
+    "endDate": "2024-12-01T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a4",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72bf0f1c1b47650cbe8a1"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8d7",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Market Research",
+    "description": "Conduct market research for the new marketing strategy.",
+    "startDate": "2024-09-15T00:00:00.000Z",
+    "endDate": "2024-09-30T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72bf0f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8d8",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Campaign Design",
+    "description": "Design the marketing campaign based on research findings.",
+    "startDate": "2024-10-01T00:00:00.000Z",
+    "endDate": "2024-10-15T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72cb7f1c1b47650cbe8a5",
+      "64f72bf0f1c1b47650cbe8a2"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8d9",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Campaign Execution",
+    "description": "Execute the marketing campaign and monitor results.",
+    "startDate": "2024-10-16T00:00:00.000Z",
+    "endDate": "2024-11-05T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72cb7f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8da",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Performance Review",
+    "description": "Review the performance of the marketing campaign and prepare a report.",
+    "startDate": "2024-11-06T00:00:00.000Z",
+    "endDate": "2024-11-15T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a4",
+      "64f72cb7f1c1b47650cbe8a2"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8db",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Final Report",
+    "description": "Prepare and finalize the campaign performance report.",
+    "startDate": "2024-11-16T00:00:00.000Z",
+    "endDate": "2024-11-30T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72cb7f1c1b47650cbe8a5",
+      "64f72bf0f1c1b47650cbe8a2"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8dc",
+    "projectId": "64f8a8a2f1c1b47650cbe8b2",
+    "name": "Campaign Optimization",
+    "description": "Optimize the marketing campaign based on performance data.",
+    "startDate": "2024-12-01T00:00:00.000Z",
+    "endDate": "2024-12-15T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72cb7f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72ca2f1c1b47650cbe8a4"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8dd",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Initial Research",
+    "description": "Conduct initial research and gather requirements for the website redesign.",
+    "startDate": "2024-10-01T00:00:00.000Z",
+    "endDate": "2024-10-15T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72c07f1c1b47650cbe8a2"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8de",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Wireframing",
+    "description": "Create wireframes and mockups for the new website design.",
+    "startDate": "2024-10-16T00:00:00.000Z",
+    "endDate": "2024-11-01T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a3",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72c07f1c1b47650cbe8a2"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8df",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Development",
+    "description": "Develop the new website based on the approved designs.",
+    "startDate": "2024-11-02T00:00:00.000Z",
+    "endDate": "2024-11-30T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a3",
+      "64f72cb7f1c1b47650cbe8a5"
+    ],
+    "createdBy": "64f72c07f1c1b47650cbe8a2"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8e0",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Testing",
+    "description": "Test the new website for bugs and performance issues.",
+    "startDate": "2024-12-01T00:00:00.000Z",
+    "endDate": "2024-12-15T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a1",
+      "64f72cb7f1c1b47650cbe8a3"
+    ],
+    "createdBy": "64f72c07f1c1b47650cbe8a2"
+  },
+  {
+    "_id": "64f8b4b2f1c1b47650cbe8e1",
+    "projectId": "64f8ab27f1c1b47650cbe8b3",
+    "name": "Launch",
+    "description": "Deploy the new website and ensure it is live.",
+    "startDate": "2024-12-16T00:00:00.000Z",
+    "endDate": "2024-12-31T00:00:00.000Z",
+    "status": "not_started",
+    "assignedTo": [
+      "64f72bf0f1c1b47650cbe8a3",
+      "64f72cb7f1c1b47650cbe8a4"
+    ],
+    "createdBy": "64f72c07f1c1b47650cbe8a2"
+  }
+]

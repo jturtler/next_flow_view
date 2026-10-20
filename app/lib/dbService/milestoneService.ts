@@ -1,64 +1,86 @@
 "use server";
 
-import mongoose from "mongoose";
+import { randomBytes } from "node:crypto";
 import { JSONObject } from "../definations";
-import connectToDatabase from "./db";
-import * as Utils from "@/lib/utils";
-import Milestone from "../schemas/Milestone.schema";
+import { readFileData, updateDataList } from "@/services/fileService";
+import { TMilestone } from "../../../types/model";
+
+const milestoneFileName = "milestones.json";
 
 export async function fetchMilestonesByProjectIdList(
 	projectIds: string[]
 ): Promise<JSONObject> {
 	try {
-		await connectToDatabase();
+		const projectIdSet = new Set(projectIds);
+		const milestones = await readFileData<TMilestone>(milestoneFileName);
 
-		const projectObjIds = projectIds.map(
-			(id) => new mongoose.Types.ObjectId(id)
-		);
-		const milestones = await Milestone.find({
-			projectId: { $in: projectObjIds },
-		});
-
-		return { status: "success", data: Utils.cloneJSONObject(milestones) };
+		return {
+			status: "success",
+			data: milestones.filter((milestone) =>
+				projectIdSet.has(milestone.projectId),
+			),
+		};
 	} catch (error: any) {
 		return { status: "error", message: error.message };
 	}
 }
 
-
-
-export async function saveMilestone( payload: JSONObject ): Promise<JSONObject> {
+export async function saveMilestone(payload: JSONObject): Promise<JSONObject> {
 	try {
-		await connectToDatabase();
-
-		let milestone: JSONObject = Utils.cloneJSONObject(payload);
-		milestone.projectId = new mongoose.Types.ObjectId(payload.projectId);
-		milestone.assignedTo = payload.assignedTo.map((id: string) => new mongoose.Types.ObjectId(id));
-		milestone.createdBy = new mongoose.Types.ObjectId(payload.createdBy);
-		
-        // Save the milestone to the database
-		let newMilestone;
-		if( milestone._id === undefined ) { // Add new
-        	newMilestone = await Milestone.create(milestone);
-		}
-		else {
-			newMilestone = await Milestone.findByIdAndUpdate(milestone._id, milestone, { new: true, runValidators: true });
+		const now = new Date().toISOString();
+		const dueDate = new Date(payload.dueDate);
+		if (Number.isNaN(dueDate.getTime())) {
+			throw new Error("Milestone due date must be valid.");
 		}
 
-		return { status: "success", data: Utils.cloneJSONObject(newMilestone) };
+		const milestoneData: TMilestone = {
+			...payload,
+			_id: payload._id ?? randomBytes(12).toString("hex"),
+			projectId: payload.projectId,
+			name: payload.name,
+			description: payload.description,
+			dueDate: dueDate.toISOString(),
+			status: payload.status,
+			assignedTo: payload.assignedTo,
+			createdBy: payload.createdBy,
+			createdAt: payload.createdAt ?? now,
+			updatedAt: now,
+		};
+
+		const savedMilestone = await updateDataList<TMilestone, TMilestone>(
+			milestoneFileName,
+			(milestones) => {
+				const existingIndex = milestones.findIndex(
+					(milestone) => milestone._id === milestoneData._id,
+				);
+				if (existingIndex === -1) {
+					milestones.push(milestoneData);
+					return milestoneData;
+				}
+
+				const updatedMilestone = {
+					...milestoneData,
+					createdAt: milestones[existingIndex].createdAt,
+				};
+				milestones[existingIndex] = updatedMilestone;
+				return updatedMilestone;
+			},
+		);
+
+		return { status: "success", data: savedMilestone };
 	} catch (error: any) {
 		return { status: "error", message: error.message };
 	}
 }
-
 
 export async function removeMilestone(id: string): Promise<JSONObject> {
-	
 	try {
-		await connectToDatabase();
-		
-        // Save the milestone to the database
-		const newMilestone = await Milestone.findByIdAndDelete(id);
+		await updateDataList<TMilestone, void>(milestoneFileName, (milestones) => {
+			const milestoneIndex = milestones.findIndex(
+				(milestone) => milestone._id === id,
+			);
+			if (milestoneIndex !== -1) milestones.splice(milestoneIndex, 1);
+		});
 
 		return { status: "success" };
 	} catch (error: any) {

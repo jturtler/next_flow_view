@@ -1,41 +1,50 @@
 'use server';
 
+import { randomBytes } from "node:crypto";
 import { JSONObject } from "../definations";
-import connectToDatabase from "./db";
-import User from "../schemas/User.schema";
 import * as Encrypt from "./encryptPassword";
-import * as Utils from "@/lib/utils";
-import mongoose from "mongoose";
+import {
+	assertSessionSecret,
+	clearSession,
+	createSession,
+} from "@/lib/auth/session";
+import { readFileData, updateDataList } from "@/services/fileService";
+import { TUser } from "../../../types/model";
 
+const userFileName = "users.json";
+
+const withoutPassword = ({ password: _password, ...user }: TUser): Partial<TUser> =>
+	user;
 
 export async function login({email, password}: JSONObject): Promise<JSONObject> {
 
 	try {
-		await connectToDatabase();
-		const searchResult = await User.find({ email });
+		assertSessionSecret();
 
-		// Find the users with the password if there is password in parametters
-		let matchedUser: JSONObject | null = null;
-		for (let i = 0; i < searchResult.length; i++) {
-			const user = searchResult[i];
-			const matched = await Encrypt.comparePassword(password!, user.password);
-			if (matched) {
-				matchedUser = user;
-				break;
-			}
+		if (!email || !password) {
+			return { status: "error", message: "Email and password are required." };
 		}
 
-		if ( matchedUser === null ) {
-			return ({status: "fail", message: "Username/Password is wrong"});
+		const users = await readFileData<TUser>(userFileName);
+		const foundUser = users.find(
+			(user) => user.email.toLowerCase() === email.toLowerCase(),
+		);
+		if (!foundUser || !(await Encrypt.comparePassword(password, foundUser.password))) {
+			return { status: "error", message: "Invalid email or password." };
 		}
-		
 
-		const teamMemberIdObjs = matchedUser.teamMembers.map((id: string) => new mongoose.Types.ObjectId(id));
-		const teamMembers = await User.find({ _id: { $in: teamMemberIdObjs } });
-		matchedUser.teamMembers = teamMembers;
+		const usersById = new Map(users.map((user) => [user._id, user]));
+		const teamMembers = (foundUser.teamMembers ?? [])
+			.map((id) => usersById.get(id))
+			.filter((user): user is TUser => user !== undefined)
+			.map(withoutPassword);
+		const safeUser = {
+			...withoutPassword(foundUser),
+			teamMembers,
+		};
+		await createSession(String(foundUser._id));
 
-		// Utils.cloneJSONObject(matchedUser) ==> need to do it so that I can avoid the issue "Warning: Only plain objects can be passed to Client Components from Server Components" 
-		return ({status: "success", data: Utils.cloneJSONObject( matchedUser )});
+		return { status: "success", data: safeUser };
 	} catch (error: any) {
 		return ({status: "error", message: error.message});
 	}
@@ -44,47 +53,46 @@ export async function login({email, password}: JSONObject): Promise<JSONObject> 
 export async function register(userData: JSONObject): Promise<JSONObject> {
 	
 	try {
-		await connectToDatabase();
+		assertSessionSecret();
+		if (
+			typeof userData.email !== "string" ||
+			!userData.email.trim() ||
+			typeof userData.password !== "string" ||
+			!userData.password ||
+			typeof userData.role !== "string" ||
+			!userData.role
+		) {
+			return { status: "error", message: "Email, password, and role are required." };
+		}
 
-		const password = userData.password;
-		userData.password = await Encrypt.hashPassword(password);
+		const email = userData.email.trim();
+		const now = new Date().toISOString();
+		const newUser: TUser = {
+			_id: randomBytes(12).toString("hex"),
+			email,
+			password: await Encrypt.hashPassword(userData.password),
+			role: userData.role,
+			teamMembers: [],
+			createdAt: now,
+			updatedAt: now,
+		};
 
-		const newUser = await User.create(userData);
-		return ({status: "succcess", data: Utils.cloneJSONObject(newUser)});
+		await updateDataList<TUser, TUser>(userFileName, (users) => {
+			if (users.some((user) => user.email.toLowerCase() === email.toLowerCase())) {
+				throw new Error("An account with this email already exists.");
+			}
+			users.push(newUser);
+			return newUser;
+		});
+
+		await createSession(String(newUser._id));
+		return { status: "success", data: withoutPassword(newUser) };
 
 	} catch (error: any) {
 		return ({status: "error", message: error.message});
-		// if (error instanceof mongoose.Error.ValidationError) {
-        //     return({status: "error",error: 'Validation Error:' + error.message});
-        // } else if (error instanceof mongoose.Error.CastError) {
-        //     return({error: 'Cast Error:' + error.message});
-        // } else if (error.code === 11000) {  // Duplicate key error code
-        //     return({error: 'Duplicate Key Error:' + error.message});
-        // } else {
-        //     return({error: 'UnknownError:' + error.message});
-        // }
 	}
 }
 
-
-// export async function linkTeamMembers() {
-//     try {
-//         await connectToDatabase();
-
-//         // Find all users with the "team_member" role
-//         const teamMembers = await User.find({ role: 'team_member' });
-
-//         // Iterate over each team member and link them to other team members
-//         for (let user of teamMembers) {
-//             user.teamMembers = teamMembers
-//                 .filter(member => member._id.toString() !== user._id.toString()) // Exclude the user from their own teamMembers array
-//                 .map(member => member._id); // Map to ObjectId
-
-//             await user.save();
-//         }
-
-//         console.log('Team members linked successfully.');
-//     } catch (error) {
-//         console.error('Error linking team members:', error);
-//     } 
-// }
+export async function logout(): Promise<void> {
+	await clearSession();
+}
