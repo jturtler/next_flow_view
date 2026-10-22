@@ -22,7 +22,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 Each route also accepts `PUT` with a JSON array to replace that file's entire
 contents. API access requires a valid login session. Set `SESSION_SECRET` in
-`.env.local` to a long, random value before logging in; the server uses it to
+`session.ts` to a long, random value before logging in; the server uses it to
 sign the HTTP-only session cookie. For example:
 
 ```text

@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 
 const SESSION_COOKIE = "next_flow_view_session";
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
+const SESSION_SECRET = "qwertyuiopasdfghjklzxcvbnm1234567890";
 
 type SessionPayload = {
   userId: string;
@@ -10,7 +11,7 @@ type SessionPayload = {
 };
 
 export const assertSessionSecret = (): string => {
-  const secret = process.env.SESSION_SECRET;
+  const secret = SESSION_SECRET;
   if (!secret) {
     throw new Error("SESSION_SECRET must be configured to use authentication");
   }
