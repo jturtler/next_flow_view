@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`} data-group="mainbody">{children}</body>
+      <body className={`${inter.className}`} data-group="mainbody1">{children}</body>
     </html>
   );
 }
